@@ -16,86 +16,115 @@ search: true
 
 # Introduction
 
-Welcome to the Bookwhen Public API docs.
+> API Endpoint:
 
-Bookwhen is a flexible booking system tailored for multiple events such as classes, courses, and workshops.
+```
+https://api.bookwhen.com/v1
+```
 
-Bookwhen uses this API to run the public booking pages, so it's feature complete for a complete front-end booking solution. You could use the API to list upcoming events, or to create a full booking javascript widget. Let us know if you do!
+Welcome to the __Bookwhen Public API__ docs.
+
+Bookwhen is a flexible booking system for recurring events such as classes, courses, and workshops.
+
+The bookwhen public pages use this API so it's feature complete for a complete front-end booking solution. You could use the API to list upcoming events, or to create a full booking javascript widget. Let us know if you do!
 
 # Authentication
 
-> Use HTTP Basic to authenticate:
+> Use HTTP Basic authentication for all requests:
 
 ```curl
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl https://api.bookwhen.com/v1/events \
+  -u YOURAPIKEY:
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Replace `YOURAPIKEY` with your API key and append a colon to prevent it from asking for a password.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Bookwhen uses API keys to allow access to the API. You can register a new Bookwhen API key at our [developer portal](http://example.com/developers).
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Bookwhen expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Authorization: YOURAPIKEY`
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+<!--aside class="notice">
+You must replace <code>YOURAPIKEY</code> with your personal API key.
+</aside-->
 
-# Kittens
+# Events
 
-## Get All Kittens
+## Get All Events
 
 ```curl
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://api.bookwhen.com/v1/events"
+  -H "Authorization: YOURAPIKEY"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Isis",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "events": [
+    {
+      "id": "ev-sv06-20151204100000",
+      "title": "Friday workshop",
+      "start_at": "2015-12-04T10:00:00.000+00:00",
+      "end_at": "2015-12-04T12:30:00.000+00:00",
+      "all_day": false,
+      "attendee_limit": 12,
+      "attendee_count": 1,
+      "ticket_ids": [
+        "ti-sv06-20151204100000-tqn6",
+        "ti-sv06-20151204100000-t3cm",
+        "ti-sv06-20151204100000-tvqe"
+      ]
+    },
+    {
+      "id": "ev-sgw7-20151205130000",
+      "title": "Saturday session",
+      "start_at": "2015-12-05T13:00:00.000+00:00",
+      "end_at": "2015-12-05T14:00:00.000+00:00",
+      "all_day": false,
+      "attendee_limit": 1,
+      "attendee_count": 0,
+      "ticket_ids": [
+        "ti-sgw7-20151205130000-t2mm"
+      ]
+    }
+  ],
+  "meta": {
+    "continues": true
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all events.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://api.bookwhen.com/v1/events`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Parameter   | Description
+----------- | -----------
+calendar    | Restrict to events on a given calendar. The calendar ID can be found in the URL of your admin schedule page.
+entry       | Restrict to a single entry type.
+limit       | Max records to return. Default 20.
+offset      | Offset starting point in list of items.
+starts      | Dictionary: gt (>), gte (>=), lt (<), lte (<=)
+tags        | Array of tag words to include. All if blank.
+locations   | Array of location ids to include. All if blank.
+search_text | Free text search on title and description text.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
-## Get a Specific Kitten
+<!--aside class="success">
+Remember — a happy event is an authenticated event!
+</aside-->
+
+## Get a Specific Event
 
 ```curl
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "https://api.bookwhen.com/v1/events/2"
+  -H "Authorization: YOURAPIKEY"
 ```
 
 > The above command returns JSON structured like this:
@@ -110,17 +139,19 @@ curl "http://example.com/api/kittens/2"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific event.
 
-<aside class="warning">If you're not using an administrator API key, note that some kittens will return 403 Forbidden if they are hidden for admins only.</aside>
+<!--aside class="warning">
+If you're not using an administrator API key, note that some events will return 403 Forbidden if they are hidden for admins only.
+</aside-->
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://example.com/events/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the event to retrieve
 

@@ -43,13 +43,13 @@ $search-notice-bg: #c97a7e;
 // OTHER COLORS
 ////////////////////
 $nav-border-color: #f0f4f7;
-$nav-footer-border-color: #ccc;
 $search-box-border-color: #ccc;
 
 
 // TEXT COLORS
 ////////////////////
 $main-text: #4c555a; // main content text color
+$link-color: #0099e5;
 $nav-text: #4c555a;
 $nav-active-text: #0099e5;
 $lang-select-text: #fff; // color of unselected language tab text
@@ -59,14 +59,13 @@ $lang-select-pressed-text: #fff; // color of language tab text when mouse is pre
 
 // SIZES
 ////////////////////
-$nav-width: 230px; // width of the navbar
-$examples-width: 50%; // portion of the screen taken up by code examples
+$nav-width: 200px; // width of the navbar
+$examples-width: 48%; // portion of the screen taken up by code examples
 $logo-margin: 20px; // margin between nav items and logo, ignored if search is active
 $main-padding: 28px; // padding to left and right of content & examples
 $nav-padding: 15px; // padding to left and right of navbar
 $nav-v-padding: 10px; // padding used vertically around search boxes and results
 $nav-indent: 10px; // extra padding for ToC subitems
-$code-annotation-padding: 13px; // padding inside code annotations
 $h1-margin-bottom: 21px; // padding under the largest header tags
 $tablet-width: 930px; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width; // min width before reverting to mobile size
@@ -86,7 +85,7 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 
 %code-font {
   font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
