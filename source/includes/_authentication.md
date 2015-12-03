@@ -22,7 +22,7 @@ curl https://api.bookwhen.com/v1/events \
   -u 8itj6o2stks9r5u7mhy742g3fb4g-f22031c16c985ef9e50ab04c5f5c1bf318bb9848cddbdd7dca26dd426a0f2cc1:
 ```
 
-_Note:_ The use of the OAuth2 bearer token embedded in the basic auth username is a little unconventional but 'keeps it simple'.
+_Note:_ The use of the _OAuth2 bearer token_ embedded in the basic auth username is a little unconventional but 'keeps it simple'.
 
 The OAuth2 endpoints are:
 
