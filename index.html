@@ -70,67 +70,22 @@
 <p>Replace <code class="prettyprint">8itj6o2stks9r5u7mhy742g3fb4g</code> with your API Key. Append a colon <code class="prettyprint">:</code> to prevent it from asking for a password.</p>
 </blockquote>
 
-<p>All requests must be authenticated using an <strong>HTTP Basic username</strong> and a blank password.</p>
+<p>All requests must be authenticated using an <strong>HTTP Basic username</strong> with a <strong>blank</strong> password.</p>
 
-<p>The username <strong>must contain</strong> the <strong>API Key</strong> for your account, and <strong>optionally</strong> an <strong>OAuth2 bearer token</strong> obtained for a particular user. Join the two tokens with a hyphen.</p>
+<p>The username is the <strong>API Key</strong> for your account.</p>
 
-<p>You will soon be able to obtain your API Key from your account settings pages, but for now please <a href="mailto:support@bookwhen.com?Subject=Bookwhen%20API%20Key">get in touch</a>.</p>
+<p>You will able to obtain your API Key from your account settings pages in due course, but for now please <a href="mailto:support@bookwhen.com?Subject=Bookwhen%20API%20Key">get in touch</a>.</p>
 
 <blockquote>
-<p>Example of a call authenticated additionally with an OAuth2 bearer token:</p>
+<p>Example:</p>
 </blockquote>
 <pre class="highlight plaintext"><code>curl https://api.bookwhen.com/v1/events \
-  -u 8itj6o2stks9r5u7mhy742g3fb4g-f22031c16c985ef9e50ab04c5f5c1bf318bb9848cddbdd7dca26dd426a0f2cc1:
+  -u 8itj6o2stks9r5u7mhy742g3fb4g:
 </code></pre>
-
-<p><em>Note:</em> The use of the <em>OAuth2 bearer token</em> embedded in the basic auth username is a little unconventional but &lsquo;keeps it simple&rsquo;.</p>
-
-<p>The OAuth2 endpoints are:</p>
-
-<p><code class="prettyprint">http://api.bookwhen.com/oauth/authorize</code>
-<code class="prettyprint">http://api.bookwhen.com/oauth/token</code></p>
-
-<p><a href="mailto:support@bookwhen.com?Subject=Bookwhen%20OAuth%20Client">Contact us</a> to set you up with an OAuth2 client ID and secret.</p>
 
 <aside class="notice">
 You must replace <code>8itj6o2stks9r5u7mhy742g3fb4g</code> with the API Key for your account. The one shown is for the bookwhen <a href="https://bookwhen.com/example">example page</a>.
 </aside>
-
-          <h1 id="people">People</h1>
-
-<h2 id="get-authenticated-user">Get Authenticated User</h2>
-<pre class="highlight plaintext"><code>curl https://api.bookwhen.com/v1/people/current \
-  -u 8itj6o2stks9r5u7mhy742g3fb4g-f22031c16c985ef9e50ab04c5f5c1bf318bb9848cddbdd7dca26dd426a0f2cc1:
-</code></pre>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11wgzy8pycii"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"is_admin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>Retrieve basic information about the current user as authenticated by the OAuth token. If no OAuth2 bearer token is supplied then a 404 <em>person not found</em> message will be returned.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://api.bookwhen.com/v1/people/current</code></p>
-
-<h3 id="attributes">Attributes</h3>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>is_admin</td>
-<td>Is the user an administrator of the account?</td>
-</tr>
-</tbody></table>
 
           <h1 id="events">Events</h1>
 
@@ -356,7 +311,7 @@ All parameters are optional.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/events/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET https://api.bookwhen.com/v1/events/&lt;ID&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
