@@ -197,7 +197,7 @@ This endpoint retrieves a specific event.
 
 ### HTTP Request
 
-`GET http://example.com/events/<ID>`
+`GET https://api.bookwhen.com/v1/events/<ID>`
 
 ### URL Parameters
 
