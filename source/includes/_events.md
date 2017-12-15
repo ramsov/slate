@@ -59,7 +59,7 @@ calendar    | Restrict to events on a given calendar. The calendar ID can be fou
 entry       | Restrict to a single entry type.
 limit       | Max records to return. Default 20.
 offset      | Offset starting point in list of items.
-starts      | Dictionary: gt (>), gte (>=), lt (<), lte (<=)
+start       | Dictionary: gt (>), gte (>=), lt (<), lte (<=)
 tags        | Array of tag words to include. All if blank.
 locations   | Array of location IDs to include. All if blank.
 search_text | Free text search on title and description.
